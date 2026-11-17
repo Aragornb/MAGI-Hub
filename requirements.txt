@@ -1,0 +1,14 @@
+# MAGI-Hub Python Dependencies (Permissive Licenses: MIT / BSD / Apache-2.0 / PSF)
+flask>=3.1.0
+werkzeug>=3.1.0
+requests>=2.32.0
+python-dotenv>=1.0.0
+cryptography>=44.0.0
+google-genai>=1.0.0
+reportlab>=4.2.0
+python-docx>=1.1.0
+openpyxl>=3.1.0
+python-pptx>=1.0.0
+pillow>=11.0.0
+pandas>=2.2.0
+pywebview>=5.3.0

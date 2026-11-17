@@ -1,0 +1,29 @@
+# Environment & Secrets (LGPD / Due Diligence)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+.vault_master.key
+
+# Dependencies & Build Artifacts
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.exe
+*.zip
+*.spec.bak
+
+# Local-First Runtime Vault & Audit Logs
+nerv_vault_files/
+*.jsonl
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

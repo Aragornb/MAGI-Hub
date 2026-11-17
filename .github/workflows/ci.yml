@@ -1,0 +1,43 @@
+name: MAGI-Hub CI/CD (Build, Licenses & WCAG 2.2 A11y)
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: TypeScript typecheck
+        run: npm run lint
+
+      - name: Open-Source License Check
+        run: npm run check:licenses
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Verify WCAG 3.1.1 lang attribute in index.html
+        run: grep -q 'lang="pt-BR"' index.html
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify Python syntax
+        run: python -m py_compile server.py orchestrator.py providers.py config.py artifacts_manager.py autonomous_agents.py security_lgpd.py
